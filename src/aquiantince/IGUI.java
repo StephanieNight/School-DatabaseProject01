@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package buiss;
+package aquiantince;
 
 /**
  *
- * @author Stephanie
+ * @author ulriksandberg
  */
-public class Sensor {
+public interface IGUI {
+    
+    void injectBusiness(IBuss businessLayer);
+    void startApplication(String[] args);
+    
     
 }

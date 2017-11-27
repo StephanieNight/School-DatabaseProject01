@@ -4,16 +4,14 @@
  * and open the template in the editor.
  */
 package aquiantince;
-import java.util.Date;
-import java.util.UUID;
+
 /**
  *
- * @author Stephanie
+ * @author ulriksandberg
  */
-public interface IReadings {
+public enum SensorType {
     
-    Date getTime();
-    Double getValue();
-    UUID getId();
-    SensorType getType(); 
+    Temp(), Air();
+    
+   
 }

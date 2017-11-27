@@ -3,18 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package buiss;
+package data;
 
-import aquiantince.SensorType;
+import aquiantince.IData;
 
 /**
  *
- * @author Stephanie
+ * @author ulriksandberg
  */
-public class SensorTemp extends SensorBase {
-    
-    public SensorTemp(SensorType type) {
-        super(type);
-    }
+public class DataFacade implements IData {
     
 }

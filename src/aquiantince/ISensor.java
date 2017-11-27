@@ -5,10 +5,22 @@
  */
 package aquiantince;
 
+import java.util.UUID;
+
 /**
  *
  * @author Stephanie
  */
 public interface ISensor {
+    
+    void setValue(double value);
+    double getValue();
+    SensorType getType();
+    UUID getId();
+    IReadings[] getReadings();
+    void makeReading();
+    void addReading(IReadings reading);
+    String toString();
+    
     
 }

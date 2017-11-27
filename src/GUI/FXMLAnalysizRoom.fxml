@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="GUI.FXMLAnalysizRoomController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="622.0" prefWidth="753.0">
+         <children>
+            <GridPane layoutY="68.0" prefHeight="554.0" prefWidth="753.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="68.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="391.5629119873047" minWidth="10.0" prefWidth="374.277099609375" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.0" minWidth="10.0" prefWidth="378.722900390625" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="162.55531311035156" minHeight="0.0" prefHeight="76.83926391601562" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="550.8367614746094" minHeight="10.0" prefHeight="370.6429443359375" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="550.8367614746094" minHeight="10.0" prefHeight="115.8570556640625" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="211.0" text="Rooms" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Avenir Next Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="inspectBuilding" mnemonicParsing="false" onAction="#inspectBuilding" text="Inspect Room" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <ListView prefHeight="368.0" prefWidth="345.0" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </GridPane.margin>
+                  </ListView>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="211.0" text="Graf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Avenir Next Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <AreaChart GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                     <GridPane.margin>
+                        <Insets right="20.0" />
+                     </GridPane.margin>
+                  </AreaChart>
+               </children>
+            </GridPane>
+            <Label fx:id="currentBuilding" alignment="CENTER" contentDisplay="CENTER" layoutX="237.0" layoutY="29.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="268.0" text="Inspecting Building:">
+               <font>
+                  <Font name="Avenir Next Bold" size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="backLabel" layoutX="28.0" layoutY="25.0" mnemonicParsing="false" onAction="#backBtn" text="Back" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

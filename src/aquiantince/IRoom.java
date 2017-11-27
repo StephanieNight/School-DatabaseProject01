@@ -9,21 +9,17 @@ import java.util.UUID;
 
 /**
  *
- * @author Stephanie
+ * @author ulriksandberg
  */
-public interface IBuilding {
+public interface IRoom {
     
     
     void setName(String name);
-    void setAddress(String address);
     String getName();
-    String getAddress();
-    Boolean addRoom(String name);
-    Boolean removeRoom(IRoom room);
-    IRoom[] getRooms();
-    @Override
+    UUID getUUID();
+    ISensor[] getSensors();
+    void addSensor(SensorType type);
     String toString();
-    
-    
+    void removeSensor(ISensor sensor);
     
 }
