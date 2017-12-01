@@ -15,7 +15,7 @@ import java.util.UUID;
  *
  * @author Stephanie
  */
-public class SensorBase implements ISensor {
+public abstract class SensorBase implements ISensor {
 
     
     private UUID id;
@@ -65,9 +65,9 @@ public class SensorBase implements ISensor {
     }
 
     @Override
-    public void makeReading() {
+    public void makeReading(int id) {
         
-        IReadings reading = new SensorReading();
+        IReadings reading = new SensorReading(id);
         this.addReading(reading);
           
     }

@@ -59,7 +59,7 @@ public class Room implements IRoom{
         } else {
             newSensor = new SensorCO2(type);
         }
-        newSensor.makeReading();
+        //newSensor.makeReading();
         this.sensors.add(newSensor);
         
     }

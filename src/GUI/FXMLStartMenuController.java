@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import aquiantince.IBuss;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,13 +34,22 @@ public class FXMLStartMenuController implements Initializable {
     @FXML
     private Button AnalysizBtn;
 
+    private IBuss businessFacade;
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+        System.out.println("Main controller!");
+        businessFacade = UI.getInstance().getBusiness();
+        businessFacade.startMonitoring();
+    }
+
+    
+    
 
     @FXML
     private void segueAdmin(ActionEvent event) throws IOException {
@@ -50,6 +60,7 @@ public class FXMLStartMenuController implements Initializable {
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(newScene);
         appStage.show();
+        businessFacade.pauseTimer();
         
     }
 

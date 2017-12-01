@@ -13,6 +13,8 @@ import aquiantince.IRoom;
 import aquiantince.ISensor;
 import aquiantince.SensorType;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 /**
  *
  * @author ulriksandberg
@@ -22,13 +24,10 @@ public class BusinessFacade implements IBuss {
     
     private ArrayList<IBuilding> buildings = new ArrayList<>();
     private IData data;
-    
-    
+    private Timer timer;
+    private TimerTask task;
+    int senserGroupeID = 0;
     //
-    
-    
-    
-    
     
     
     @Override
@@ -116,6 +115,37 @@ public class BusinessFacade implements IBuss {
         
     }
     
+    public void startMonitoring() {
+        
+        System.out.println("Start monitoring");
+        this.timer = new Timer();
+        this.task = new TimerTask() {
+            public void run() {
+                
+                System.out.println("found "+ buildings.size() +" buildings");
+                for(IBuilding building: buildings) {
+                    System.out.println("found "+building.getRooms().length +" rooms");
+                    for(IRoom room: building.getRooms()) {
+                        System.out.println("found "+room.getSensors().length +" sensors");
+                        for(ISensor sensor: room.getSensors()) {
+                            sensor.makeReading(senserGroupeID);
+                        }
+                    }
+                }
+                senserGroupeID++;
+            }
+        };
+        
+        this.timer.scheduleAtFixedRate(this.task, 10000, 10000);
+      
+    }
+    
+    public void pauseTimer() {
+        
+        System.out.println("Pausing timers!");
+        timer.cancel();
+       
+    }
     
     
 }

@@ -8,8 +8,13 @@ package GUI;
 import aquiantince.IBuilding;
 import aquiantince.IBuss;
 import aquiantince.IReadings;
+import aquiantince.IRoom;
+import aquiantince.ISensor;
+import aquiantince.SensorType;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +25,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -45,6 +52,8 @@ public class FXMLAnalysizController implements Initializable {
     private Button backLabel;
     @FXML
     private ListView<String> myListView;
+    @FXML
+    private AreaChart<Integer, Double> myAreaGraph;
 
     /**
      * Initializes the controller class.
@@ -78,10 +87,68 @@ public class FXMLAnalysizController implements Initializable {
 
     private void setGraph() {
         
-        //Get data from business
-        //IReadings readings = 
+        System.out.println("Show graph for building: " + this.selectedBuilding.getName());
+        XYChart.Series series = new XYChart.Series();
+        series.setName("Temp");
+        IRoom[] rooms =  this.selectedBuilding.getRooms();
+        int groupID;
+        ArrayList<IReadings> ReadingsTemp = new ArrayList<>();
+        ArrayList<IReadings> ReadingsAir = new ArrayList<>();
+        ArrayList<Double> avarage = new ArrayList<>();
+ 
+        for(IRoom r :rooms) {
+            
+            ISensor[] sensors = r.getSensors();
+
+            for(ISensor s : sensors) {
+
+                for(IReadings read : s.getReadings()) {
+                    
+                    if(read.getType().equals(SensorType.Temp))
+                        ReadingsTemp.add(read);
+                    else
+                        ReadingsAir.add(read);
+                    
+                }
+            }
+        }
+        groupID = 0;
+        for (IReadings r : ReadingsTemp)
+        {
+           if(r.getTime() == groupID)
+           {
+               avarage.add(r.getValue());
+           }
+           else
+           {
+               double result = 0.0;
+               for(Double d : avarage)
+               {
+                   result += d;
+               }
+               result = result/avarage.size();
+               series.getData().add(new XYChart.Data(groupID,result));
+               avarage.clear();
+               groupID = r.getTime();
+           }
+           
+             
+              
+              
+        }
+        myAreaGraph.getData().add(series);
         
         
+        
+                      
+
+
+
+
+
+
+
+                        
         
     }
     

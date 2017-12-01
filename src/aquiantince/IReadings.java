@@ -12,7 +12,7 @@ import java.util.UUID;
  */
 public interface IReadings {
     
-    Date getTime();
+    int getTime();
     Double getValue();
     UUID getId();
     SensorType getType(); 

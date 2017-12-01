@@ -16,21 +16,21 @@ import java.util.UUID;
  */
 public class SensorReading implements IReadings {
 
-    private Date time;
+    private int time;
     private double value;
     private UUID id;
     private SensorType type;
     
-    SensorReading() {
+    SensorReading(int id) {
         
         this.id = new UUID(1, 30);
-        this.value = Math.random();
-        this.time = new Date();
+        this.value = Math.random()* 30 + 10;
+        this.time = id;
     }
     
     
     @Override
-    public Date getTime() {
+    public int getTime() {
         return this.time;
     }
 

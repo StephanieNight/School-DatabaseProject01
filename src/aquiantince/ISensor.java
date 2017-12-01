@@ -18,7 +18,7 @@ public interface ISensor {
     SensorType getType();
     UUID getId();
     IReadings[] getReadings();
-    void makeReading();
+    void makeReading(int id);
     void addReading(IReadings reading);
     String toString();
     

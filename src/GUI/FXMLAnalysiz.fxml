@@ -42,7 +42,7 @@
                   <Font name="Avenir Next Bold" size="13.0" />
                </font>
             </Label>
-            <AreaChart GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <AreaChart fx:id="myAreaGraph" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>

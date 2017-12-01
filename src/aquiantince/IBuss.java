@@ -21,7 +21,8 @@ public interface IBuss {
     ISensor[] getSensorsForCurrentRoom(IRoom room);
     void addSensor(IRoom room, SensorType type);
     void removeSensor(IRoom room, ISensor sensor);
-    
+    void startMonitoring();
+    void pauseTimer();
     
     
 }
